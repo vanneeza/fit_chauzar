@@ -27,6 +27,8 @@ class HomeView extends GetView<HomeController> {
         color: const Color(0x00fefeff),
         child: Column(
           children: [
+            // video mi
+            //---------------------------
             Container(
               height: 260,
               color: Colors.white,
@@ -69,6 +71,8 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             const SizedBox(height: 20),
+            // produk axa finacial service
+            // ---------------------------
             Container(
               color: Colors.white,
               height: 260,

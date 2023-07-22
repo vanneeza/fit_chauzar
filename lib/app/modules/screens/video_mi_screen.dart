@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../utils/web_view.dart';
 import '../home/controllers/search_video_mi_controller.dart';
-import '../home/widget/base64_convert.dart';
+import '../../utils/base64_convert.dart';
 
 class VideoMIScreen extends StatefulWidget {
   const VideoMIScreen({super.key});

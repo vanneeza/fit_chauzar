@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import '../../../data/models/video.dart';
-import '../widget/base64_convert.dart';
+import '../../../utils/base64_convert.dart';
 import '../../../utils/web_view.dart';
 
 class VideoMIHorizontal extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../utils/web_view.dart';
 import '../home/controllers/search_produk_axa_controller.dart';
-import '../home/widget/base64_convert.dart';
+import '../../utils/base64_convert.dart';
 
 class ProductAxaScreen extends StatefulWidget {
   const ProductAxaScreen({super.key});

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../utils/web_view.dart';
 import '../controllers/home_controller.dart';
 import '../../../data/models/video.dart';
-import '../widget/base64_convert.dart';
+import '../../../utils/base64_convert.dart';
 
 
 class ProductAxaHorizontal extends StatelessWidget {
