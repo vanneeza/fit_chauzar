@@ -9,6 +9,8 @@ import '../../../utils/web_view.dart';
 class VideoMIHorizontal extends StatelessWidget {
   final GetVideoMI getVideoMI = Get.put(GetVideoMI());
 
+   VideoMIHorizontal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,7 +27,7 @@ class VideoMIHorizontal extends StatelessWidget {
 }
 
 class ItemVideoMI extends StatefulWidget {
-  ItemVideoMI({
+  const ItemVideoMI({
     Key? key,
     required this.video,
   }) : super(key: key);
@@ -33,6 +35,7 @@ class ItemVideoMI extends StatefulWidget {
   final Video video;
 
   @override
+  // ignore: library_private_types_in_public_api
   _ItemVideoMIState createState() => _ItemVideoMIState();
 }
 
@@ -69,32 +72,32 @@ class _ItemVideoMIState extends State<ItemVideoMI> {
       child: InkWell(
         onTap: _openWebViewPage,
         child: AnimatedOpacity(
-          duration: Duration(milliseconds: 0),
+          duration: const Duration(milliseconds: 0),
           opacity: isTapped ? 0.2 : 1.0,
           child: Container(
-            margin: EdgeInsets.only(right: 30),
+            margin: const EdgeInsets.only(right: 30),
             width: Get.width * 0.36,
             height: 200,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   width: Get.width,
                   height: 130,
                   child: Base64ImageWidget(
                     base64String: widget.video.webContentTittleImage,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   widget.video.webContentTittle,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Text(

@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+// ignore: non_constant_identifier_names
 List<Video> VideoFromJson(String str) =>
     List<Video>.from(json.decode(str).map((x) => Video.fromJson(x)));
 
+// ignore: non_constant_identifier_names
 String VideoToJson(List<Video> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 

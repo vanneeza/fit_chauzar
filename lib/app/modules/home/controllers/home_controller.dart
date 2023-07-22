@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:fit_chauzar/app/data/models/video.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
 }
 
 class GetVideoMI extends GetxController{
@@ -51,13 +51,19 @@ Future<void> fetchVideos() async {
             videoData.map((data) => Video.fromJson(data)).toList(),
           );
         } else {
-          print("Error: video mi mana ?");
+          if (kDebugMode) {
+            print("Error: video mi mana ?");
+          }
         }
       } else {
-        print("Error: kosong data.");
+        if (kDebugMode) {
+          print("Error: kosong data.");
+        }
       }
     } catch (error) {
-      print("Error fetching data: $error");
+      if (kDebugMode) {
+        print("Error fetching data: $error");
+      }
     } finally {
       isLoading.value = false;
     }
@@ -108,13 +114,19 @@ Future<void> fetchVideos() async {
             videoData.map((data) => Video.fromJson(data)).toList(),
           );
         } else {
-          print("Error: Produk Axa Financial Services ?");
+          if (kDebugMode) {
+            print("Error: Produk Axa Financial Services ?");
+          }
         }
       } else {
-        print("Error: kosong data.");
+        if (kDebugMode) {
+          print("Error: kosong data.");
+        }
       }
     } catch (error) {
-      print("Error fetching data: $error");
+      if (kDebugMode) {
+        print("Error fetching data: $error");
+      }
     } finally {
       isLoading.value = false;
     }

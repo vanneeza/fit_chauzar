@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 class Base64ImageWidget extends StatelessWidget {
   final String base64String;
 
-  Base64ImageWidget({required this.base64String});
+  const Base64ImageWidget({super.key, required this.base64String});
 
   @override
   Widget build(BuildContext context) {

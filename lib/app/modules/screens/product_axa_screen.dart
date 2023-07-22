@@ -7,7 +7,10 @@ import '../home/controllers/search_produk_axa_controller.dart';
 import '../home/widget/base64_convert.dart';
 
 class ProductAxaScreen extends StatefulWidget {
+  const ProductAxaScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ProdukAxaScreenState createState() => _ProdukAxaScreenState();
 }
 
@@ -52,11 +55,11 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
             text: 'Produk Axa Financial Service',
             style: TextStyle(
               color: Colors.black,
@@ -73,13 +76,13 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: searchProdukAxaController.inputSearch,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[100],
@@ -94,7 +97,6 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
                       onPressed: () {
                         searchProdukAxaController.searchText.value =
                             searchProdukAxaController.inputSearch.text;
-                        print('Icon DI press');
                       },
                     ),
                   ),
@@ -102,7 +104,7 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
                 Expanded(
                   child: Obx(
                     () => searchProdukAxaController.isLoading.value
-                        ? Center(child: CircularProgressIndicator())
+                        ? const Center(child: CircularProgressIndicator())
                         : SingleChildScrollView(
                             child: Column(
                               children: [
@@ -126,51 +128,45 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
                                           child: Container(
                                             width: MediaQuery.of(context).size.width * 0.45,
                                             height: 270,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Colors.white,
                                               border: Border(
                                                 bottom: BorderSide(color: Colors.grey, width: 1),
                                               ),
                                             ),
-                                            margin: EdgeInsets.only(bottom: 10),
-                                            padding: EdgeInsets.all(8.0),
+                                            margin: const EdgeInsets.only(bottom: 10),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Base64ImageWidget(
-                                                      base64String: searchProdukAxaController
-                                                          .filteredData[index]
-                                                          .webContentTittleImage),
                                                   width: 140,
                                                   height: 140,
                                                   decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(40),
                                                   ),
+                                                  child: Base64ImageWidget(
+                                                      base64String: searchProdukAxaController
+                                                          .filteredData[index]
+                                                          .webContentTittleImage),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchProdukAxaController.filteredData[index].webContentTittle}",
-                                                    style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 15,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchProdukAxaController.filteredData[index].webContentTittle,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 15,
+                                                    overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchProdukAxaController.filteredData[index].webContentDate}",
-                                                    style: TextStyle(fontSize: 12, color: Colors.grey),
-                                                  ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchProdukAxaController.filteredData[index].webContentDate,
+                                                  style: const TextStyle(fontSize: 12, color: Colors.grey),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchProdukAxaController.filteredData[index].webContentDescription!.substring(0, searchProdukAxaController.filteredData[index].webContentDescription!.length < 40 ? searchProdukAxaController.filteredData[index].webContentDescription!.length : 40)}",
-                                                  ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchProdukAxaController.filteredData[index].webContentDescription.substring(0, searchProdukAxaController.filteredData[index].webContentDescription.length < 40 ? searchProdukAxaController.filteredData[index].webContentDescription.length : 40),
                                                 ),
                                               ],
                                             ),
@@ -193,18 +189,18 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
                                             child: Container(
                                               width: MediaQuery.of(context).size.width * 0.40,
                                               height: 270,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 border: Border(
                                                   bottom: BorderSide(color: Colors.grey, width: 1),
                                                 ),
                                               ),
-                                              margin: EdgeInsets.only(bottom: 10),
-                                              padding: EdgeInsets.all(8.0),
+                                              margin: const EdgeInsets.only(bottom: 10),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width: 140,
                                                     height: 140,
                                                     child: Base64ImageWidget(
@@ -212,28 +208,22 @@ class _ProdukAxaScreenState extends State<ProductAxaScreen> {
                                                             .filteredData[index + 1]
                                                             .webContentTittleImage),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchProdukAxaController.filteredData[index + 1].webContentTittle}",
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 15,
-                                                      ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchProdukAxaController.filteredData[index + 1].webContentTittle,
+                                                    style: const TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 15,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchProdukAxaController.filteredData[index + 1].webContentDate}",
-                                                      style: TextStyle(fontSize: 12, color: Colors.grey),
-                                                    ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchProdukAxaController.filteredData[index + 1].webContentDate,
+                                                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchProdukAxaController.filteredData[index + 1].webContentDescription!.substring(0, searchProdukAxaController.filteredData[index + 1].webContentDescription!.length < 40 ? searchProdukAxaController.filteredData[index + 1].webContentDescription!.length : 40)}",
-                                                    ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchProdukAxaController.filteredData[index + 1].webContentDescription.substring(0, searchProdukAxaController.filteredData[index + 1].webContentDescription.length < 40 ? searchProdukAxaController.filteredData[index + 1].webContentDescription.length : 40),
                                                   ),
                                                 ],
                                               ),

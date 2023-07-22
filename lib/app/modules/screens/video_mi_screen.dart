@@ -6,7 +6,10 @@ import '../home/controllers/search_video_mi_controller.dart';
 import '../home/widget/base64_convert.dart';
 
 class VideoMIScreen extends StatefulWidget {
+  const VideoMIScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _VideoMIScreenState createState() => _VideoMIScreenState();
 }
 
@@ -51,11 +54,11 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
             text: 'Video MI',
             style: TextStyle(
               color: Colors.black,
@@ -72,13 +75,13 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: searchVideoMIController.inputSearch,
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[100],
@@ -93,7 +96,6 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
                       onPressed: () {
                         searchVideoMIController.searchText.value =
                             searchVideoMIController.inputSearch.text;
-                        print('Icon DI press');
                       },
                     ),
                   ),
@@ -101,7 +103,7 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
                 Expanded(
                   child: Obx(
                     () => searchVideoMIController.isLoading.value
-                        ? Center(child: CircularProgressIndicator())
+                        ? const Center(child: CircularProgressIndicator())
                         : SingleChildScrollView(
                             child: Column(
                               children: [
@@ -125,51 +127,45 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
                                           child: Container(
                                             width: MediaQuery.of(context).size.width * 0.45,
                                             height: 270,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Colors.white,
                                               border: Border(
                                                 bottom: BorderSide(color: Colors.grey, width: 1),
                                               ),
                                             ),
-                                            margin: EdgeInsets.only(bottom: 10),
-                                            padding: EdgeInsets.all(8.0),
+                                            margin: const EdgeInsets.only(bottom: 10),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Base64ImageWidget(
-                                                      base64String: searchVideoMIController
-                                                          .filteredData[index]
-                                                          .webContentTittleImage),
                                                   width: 140,
                                                   height: 140,
                                                   decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(40),
                                                   ),
+                                                  child: Base64ImageWidget(
+                                                      base64String: searchVideoMIController
+                                                          .filteredData[index]
+                                                          .webContentTittleImage),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchVideoMIController.filteredData[index].webContentTittle}",
-                                                    style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 15,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchVideoMIController.filteredData[index].webContentTittle,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 15,
+                                                    overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchVideoMIController.filteredData[index].webContentDate}",
-                                                    style: TextStyle(fontSize: 12, color: Colors.grey),
-                                                  ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchVideoMIController.filteredData[index].webContentDate,
+                                                  style: const TextStyle(fontSize: 12, color: Colors.grey),
                                                 ),
-                                                SizedBox(height: 10),
-                                                Container(
-                                                  child: Text(
-                                                    "${searchVideoMIController.filteredData[index].webContentDescription!.substring(0, searchVideoMIController.filteredData[index].webContentDescription!.length < 40 ? searchVideoMIController.filteredData[index].webContentDescription!.length : 40)}",
-                                                  ),
+                                                const SizedBox(height: 10),
+                                                Text(
+                                                  searchVideoMIController.filteredData[index].webContentDescription.substring(0, searchVideoMIController.filteredData[index].webContentDescription.length < 40 ? searchVideoMIController.filteredData[index].webContentDescription.length : 40),
                                                 ),
                                               ],
                                             ),
@@ -192,18 +188,18 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
                                             child: Container(
                                               width: MediaQuery.of(context).size.width * 0.40,
                                               height: 270,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Colors.white,
                                                 border: Border(
                                                   bottom: BorderSide(color: Colors.grey, width: 1),
                                                 ),
                                               ),
-                                              margin: EdgeInsets.only(bottom: 10),
-                                              padding: EdgeInsets.all(8.0),
+                                              margin: const EdgeInsets.only(bottom: 10),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Container(
+                                                  SizedBox(
                                                     width: 140,
                                                     height: 140,
                                                     child: Base64ImageWidget(
@@ -211,28 +207,22 @@ class _VideoMIScreenState extends State<VideoMIScreen> {
                                                             .filteredData[index + 1]
                                                             .webContentTittleImage),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchVideoMIController.filteredData[index + 1].webContentTittle}",
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 15,
-                                                      ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchVideoMIController.filteredData[index + 1].webContentTittle,
+                                                    style: const TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 15,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchVideoMIController.filteredData[index + 1].webContentDate}",
-                                                      style: TextStyle(fontSize: 12, color: Colors.grey),
-                                                    ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchVideoMIController.filteredData[index + 1].webContentDate,
+                                                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Container(
-                                                    child: Text(
-                                                      "${searchVideoMIController.filteredData[index + 1].webContentDescription!.substring(0, searchVideoMIController.filteredData[index + 1].webContentDescription!.length < 40 ? searchVideoMIController.filteredData[index + 1].webContentDescription!.length : 40)}",
-                                                    ),
+                                                  const SizedBox(height: 10),
+                                                  Text(
+                                                    searchVideoMIController.filteredData[index + 1].webContentDescription.substring(0, searchVideoMIController.filteredData[index + 1].webContentDescription.length < 40 ? searchVideoMIController.filteredData[index + 1].webContentDescription.length : 40),
                                                   ),
                                                 ],
                                               ),

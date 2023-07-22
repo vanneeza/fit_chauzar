@@ -6,12 +6,10 @@ class WebViewPage extends StatelessWidget {
   final String url;
   final String namaPage;
 
-  WebViewPage({required this.url, required this.namaPage});
+  const WebViewPage({super.key, required this.url, required this.namaPage});
 
   @override
   Widget build(BuildContext context) {
-    print(url);
-    print(namaPage);
 
     String extension = url.split('.').last.toLowerCase();
     bool isVideoExtension =
@@ -25,12 +23,12 @@ class WebViewPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.blueAccent),
+        iconTheme: const IconThemeData(color: Colors.blueAccent),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
           namaPage,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
         ),

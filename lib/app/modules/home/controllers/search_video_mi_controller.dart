@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:fit_chauzar/app/data/models/video.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +49,9 @@ class SearchVideoMIController extends GetxController {
 
       content.assignAll(filteredVideoMIList);
     } catch (e) {
-      print('Error fetching data from API: $e');
+      if (kDebugMode) {
+        print('Error fetching data from API: $e');
+      }
     } finally {
       isLoading.value = false;
     }
@@ -60,8 +63,7 @@ class SearchVideoMIController extends GetxController {
 
     // Jika searchText tidak kosong, filter data berdasarkan nilai searchText
     return content
-        .where((title) => title.webContentTittle!
-            .toLowerCase()
+        .where((title) => title.webContentTittle.toLowerCase()
             .contains(searchText.value.toLowerCase()))
         .toList();
   }

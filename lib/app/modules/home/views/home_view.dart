@@ -7,7 +7,9 @@ import '../../screens/video_mi_screen.dart';
 import '../widget/produk_axa_horizontal.dart';
 
 class HomeView extends GetView<HomeController> {
+  // ignore: non_constant_identifier_names
   final GetVideoMI VideoMIController = Get.put(GetVideoMI());
+  // ignore: non_constant_identifier_names
   final GetProdukAxa ProductAxaController = Get.put(GetProdukAxa());
 
   HomeView({Key? key}) : super(key: key);
@@ -16,13 +18,13 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfefeff),
-        title: Text('Ini App Bar', style: TextStyle(color: Colors.black)),
+        backgroundColor: const Color(0x00fefeff),
+        title: const Text('Ini App Bar', style: TextStyle(color: Colors.black)),
         centerTitle: true,
         elevation: 0,
       ),
       body: Container(
-        color: Color(0xfefeff),
+        color: const Color(0x00fefeff),
         child: Column(
           children: [
             Container(
@@ -44,7 +46,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => VideoMIScreen());
+                            Get.to(() => const VideoMIScreen());
                           },
                           child: const Text(
                             "Lihat Semua",
@@ -57,7 +59,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: VideoMIHorizontal(),
@@ -66,7 +68,7 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               color: Colors.white,
               height: 260,
@@ -87,7 +89,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(ProductAxaScreen());
+                            Get.to(const ProductAxaScreen());
                           },
                           child: const Text(
                             "Lihat Semua",
@@ -100,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Align(
                       alignment: Alignment
                           .centerLeft, 
