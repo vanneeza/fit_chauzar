@@ -13,16 +13,14 @@ class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-  appBar: AppBar(
-    backgroundColor: Color(0xFFFEFEFF),
-    title: Text('Ini App Bar', style: TextStyle(color: Colors.black)),
-    centerTitle: true,
-    elevation: 0,
-  ),
+      appBar: AppBar(
+        backgroundColor: Color(0xfefeff),
+        title: Text('Ini App Bar', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: Container(
         color: Color(0xfefeff),
         child: Column(
@@ -41,6 +39,7 @@ class HomeView extends GetView<HomeController> {
                           "Video MI",
                           style: TextStyle(
                             fontSize: 15,
+                            fontWeight: FontWeight.bold
                           ),
                         ),
                         GestureDetector(
@@ -51,6 +50,7 @@ class HomeView extends GetView<HomeController> {
                             "Lihat Semua",
                             style: TextStyle(
                               fontSize: 15,
+                              fontWeight: FontWeight.bold,
                               color: Colors.blueAccent,
                             ),
                           ),
@@ -82,6 +82,7 @@ class HomeView extends GetView<HomeController> {
                           "Produk Axa Financial Service",
                           style: TextStyle(
                             fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         GestureDetector(
@@ -92,6 +93,7 @@ class HomeView extends GetView<HomeController> {
                             "Lihat Semua",
                             style: TextStyle(
                               fontSize: 15,
+                              fontWeight: FontWeight.bold,
                               color: Colors.blueAccent,
                             ),
                           ),

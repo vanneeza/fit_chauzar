@@ -37,76 +37,71 @@ class ItemVideoMI extends StatefulWidget {
 }
 
 class _ItemVideoMIState extends State<ItemVideoMI> {
-  bool isHovering = false;
+  bool isTapped = false;
+
   void _openWebViewPage() async {
     await Get.to(() => WebViewPage(
-          url: widget.video.webContentUrl,
-          namaPage: widget.video.webContentTittle,
-        ));
+      url: widget.video.webContentUrl,
+      namaPage: widget.video.webContentTittle,
+    ));
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  void _onTapDown() {
+    setState(() {
+      isTapped = true;
+    });
+  }
+
+  void _onTapUp() {
+    setState(() {
+      isTapped = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        _openWebViewPage();
-      },
-      onTapDown: (_) {
-        setState(() {
-          isHovering = true;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          isHovering = false;
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          isHovering = false;
-        });
-      },
-      child: Material(
-        color: Colors.white, 
-        child: Ink(
-          decoration: BoxDecoration(
-            color: isHovering ? Colors.white70 : Colors.white,
-          ),
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 300), // Durasi animasi
+
+    return GestureDetector(
+      onTapDown: (_) => _onTapDown(),
+      onTapUp: (_) => _onTapUp(),
+      onTapCancel: () => _onTapUp(),
+      child: InkWell(
+        onTap: _openWebViewPage,
+        child: AnimatedOpacity(
+          duration: Duration(milliseconds: 0),
+          opacity: isTapped ? 0.2 : 1.0,
+          child: Container(
             margin: EdgeInsets.only(right: 30),
             width: Get.width * 0.36,
             height: 200,
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: Get.width,
-                    height: 130,
-                    child: Base64ImageWidget(
-                      base64String: widget.video.webContentTittleImage,
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: Get.width,
+                  height: 130,
+                  child: Base64ImageWidget(
+                    base64String: widget.video.webContentTittleImage,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.video.webContentTittle,
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    widget.video.webContentDate.toString(),
-                    style: TextStyle(fontSize: 12, color: Colors.grey[500]),
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  widget.video.webContentTittle,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  widget.video.webContentDate.toString(),
+                  style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                ),
+              ],
             ),
           ),
         ),
@@ -114,3 +109,4 @@ class _ItemVideoMIState extends State<ItemVideoMI> {
     );
   }
 }
+

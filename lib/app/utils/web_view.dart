@@ -10,10 +10,30 @@ class WebViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+    print(url);
+    print(namaPage);
+
+    String extension = url.split('.').last.toLowerCase();
+    bool isVideoExtension =
+        extension == 'mp4' || extension == 'avi' || extension == 'mov';
+
+    List<DeviceOrientation> preferredOrientations = isVideoExtension
+        ? [DeviceOrientation.landscapeLeft]
+        : [DeviceOrientation.portraitUp];
+
+    SystemChrome.setPreferredOrientations(preferredOrientations);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(namaPage),
+        iconTheme: IconThemeData(color: Colors.blueAccent),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          namaPage,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
       ),
       body: Column(
         children: [
