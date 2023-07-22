@@ -1,13 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import '../../utils/web_view.dart';
 import '../home/controllers/search_video_mi_controller.dart';
 import '../home/widget/base64_convert.dart';
 
-class VideoMIScreen extends StatelessWidget {
+class VideoMIScreen extends StatefulWidget {
+  @override
+  _VideoMIScreenState createState() => _VideoMIScreenState();
+}
+
+class _VideoMIScreenState extends State<VideoMIScreen> {
   final SearchVideoMIController searchVideoMIController =
       Get.put(SearchVideoMIController());
+
+  void _openWebViewPage(int url) async {
+    await Get.to(() => WebViewPage(
+          url: searchVideoMIController.filteredData[url].webContentUrl,
+          namaPage: searchVideoMIController.filteredData[url].webContentTittle,
+        ));
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
+  void dispose() {
+    // Cek apakah saat ini orientasi layar adalah landscape
+    if (MediaQuery.of(context).orientation == Orientation.landscape) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    }
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,19 +63,15 @@ class VideoMIScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor:
-                      Colors.grey[100], 
+                  fillColor: Colors.grey[100],
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none, 
+                    borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   hintText: 'Cari Sesuatu',
-                  hintStyle: TextStyle(
-                      color:
-                          Colors.grey[500]), 
+                  hintStyle: TextStyle(color: Colors.grey[500]),
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search,
-                        color: Colors.grey[800]),
+                    icon: Icon(Icons.search, color: Colors.grey[800]),
                     onPressed: () {
                       searchVideoMIController.searchText.value =
                           searchVideoMIController.inputSearch.text;
@@ -77,13 +96,7 @@ class VideoMIScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        Get.to(() => WebViewPage(
-                                            url: searchVideoMIController
-                                                .filteredData[index]
-                                                .webContentUrl,
-                                            namaPage: searchVideoMIController
-                                                .filteredData[index]
-                                                .webContentTittle));
+                                       _openWebViewPage(index);
                                       },
                                       child: Container(
                                         width:
@@ -151,17 +164,7 @@ class VideoMIScreen extends StatelessWidget {
                                             .filteredData.length)
                                       GestureDetector(
                                         onTap: () {
-                                          Get.to(() => WebViewPage(
-                                                url: searchVideoMIController
-                                                    .filteredData[index + 1]
-                                                    .webContentUrl
-                                                    .toString(),
-                                                namaPage:
-                                                    searchVideoMIController
-                                                        .filteredData[index + 1]
-                                                        .webContentTittle
-                                                        .toString(),
-                                              ));
+                                          _openWebViewPage(index + 1);
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)

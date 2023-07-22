@@ -38,15 +38,11 @@ class ItemVideoMI extends StatefulWidget {
 
 class _ItemVideoMIState extends State<ItemVideoMI> {
   bool isHovering = false;
-
-  // Method untuk membuka halaman WebViewPage
   void _openWebViewPage() async {
     await Get.to(() => WebViewPage(
           url: widget.video.webContentUrl,
           namaPage: widget.video.webContentTittle,
         ));
-
-    // Mengatur orientasi layar menjadi portrait saat kembali dari halaman WebViewPage
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
 
