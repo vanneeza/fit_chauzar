@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatelessWidget {
@@ -9,6 +10,7 @@ class WebViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
     return Scaffold(
       appBar: AppBar(
         title: Text(namaPage),
@@ -16,10 +18,11 @@ class WebViewPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-              child: WebView(
-            initialUrl: url,
-            javascriptMode: JavascriptMode.unrestricted,
-          )),
+            child: WebView(
+              initialUrl: url,
+              javascriptMode: JavascriptMode.unrestricted,
+            ),
+          ),
         ],
       ),
     );
